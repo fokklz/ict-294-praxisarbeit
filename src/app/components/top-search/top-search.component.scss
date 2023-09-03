@@ -1,0 +1,29 @@
+.search {
+  &-wrapper {
+    @apply flex flex-row items-center py-2 px-3 rounded-full  my-3 transition-colors cursor-text select-none;
+
+    @apply bg-slate-100 dark:bg-slate-800;
+    &.active {
+      @apply bg-slate-200 dark:bg-slate-700;
+    }
+  }
+
+  &-icon {
+    @apply pr-1 flex flex-row items-center opacity-60 dark:opacity-100;
+    @apply text-slate-500;
+  }
+
+  &-input-wrapper {
+    @apply flex-1 pr-1;
+
+    input {
+      @apply w-full ring-0 outline-none bg-transparent mb-0.5 p-1  font-medium;
+      @apply text-slate-700 dark:text-slate-200;
+    }
+  }
+
+  &-send {
+    @apply pr-1 flex flex-row items-center cursor-pointer;
+    @apply text-slate-500 dark:text-slate-300;
+  }
+}

@@ -1,0 +1,24 @@
+header {
+  @apply grid px-5 py-2;
+  grid-template-columns: 1fr 2fr 1fr;
+
+  & > div {
+    @apply col-span-1 flex flex-row items-center;
+
+    &:last-child {
+      @apply justify-end;
+
+      & > * {
+        @apply mx-1;
+
+        &:first-child {
+          @apply ml-0;
+        }
+
+        &:last-child {
+          @apply mr-0;
+        }
+      }
+    }
+  }
+}

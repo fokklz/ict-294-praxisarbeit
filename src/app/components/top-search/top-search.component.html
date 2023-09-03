@@ -1,0 +1,16 @@
+<div class="search-wrapper" #inputWrapper [ngClass]="{'active': focused}" (click)="focusInput($event)">
+  <div class="search-icon">
+    <span class="material-symbols-outlined">
+      search
+    </span>
+  </div>
+  <div class="search-input-wrapper">
+    <input #input type="text" placeholder="Search" (focus)="onFocus()" (blur)="onBlur()" (keyup)="onChanges()"
+      (keydown.enter)="dirty && focused ? do($event) : null" />
+  </div>
+  <div class="search-send" [@slideInAnimation]="dirty || focused ? 'in' : 'out'" (click)="do($event)">
+    <span class="material-symbols-outlined fill">
+      send
+    </span>
+  </div>
+</div>
