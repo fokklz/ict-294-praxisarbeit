@@ -8,12 +8,14 @@ import {
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const modules = [
   MatAutocompleteModule,
   MatFormFieldModule,
   MatInputModule,
   MatDatepickerModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

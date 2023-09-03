@@ -1,3 +1,34 @@
-<div id="wrapper" class="h-screen transition-colors wrapper bg-slate-50 dark:bg-slate-900">
+<div id="wrapper" [ngClass]="{'blured': noBackendOverlay}">
   <router-outlet></router-outlet>
+
+  <ng-adblock-detect (adblockDetected)="detected($event)"></ng-adblock-detect>
+</div>
+<div id="no-backend-overlay" *ngIf="noBackendOverlay">
+  <div class="overlay-content">
+    <div class="overlay-text-content">
+      <div class="special-icon-wrapper">
+        <div class="special-icon">
+          <div class="overlay">
+            <img src="../assets/no-backend.png">
+          </div>
+          <img src="../../../assets/backend.png" alt="server">
+        </div>
+      </div>
+      <h1>Strapi nicht gefunden</h1>
+      <p>
+        Die Verbindung zu Strapi konnte nicht hergestellt werden. Befolge die anweisungen unten um Stapi local zu
+        starten
+      </p>
+      <span>Sollte das Backend bereits ausgeführt werden auf deinen System, stelle sicher das dein ADBlocker die
+        verbindung nicht Blockiert</span>
+    </div>
+    <div class="min-w-[20vw] pt-4">
+      <app-terminal-commands [commands]="[
+      'git clone https://github.com/fokklz/ict-294-praxisarbeit-strapi.git',
+      'cd ict-294-praxisarbeit-strapi',
+      'npm install',
+      'npm run start'
+    ]"></app-terminal-commands>
+    </div>
+  </div>
 </div>

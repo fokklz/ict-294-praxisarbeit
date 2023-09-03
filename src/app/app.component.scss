@@ -1,0 +1,88 @@
+:host {
+  @apply block relative overflow-hidden h-screen w-screen;
+}
+
+::ng-deep body {
+  @apply transition-colors;
+}
+
+#wrapper {
+  @apply h-screen text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-900;
+
+  &.blured {
+    @apply blur-sm dark:blur scale-105 p-5 pointer-events-none;
+  }
+}
+
+#no-backend-overlay {
+  @apply absolute h-screen w-screen left-0 top-0 flex flex-col items-center justify-center text-slate-900 dark:text-slate-100;
+
+  .overlay {
+    &-content {
+      @apply flex flex-col items-center;
+    }
+
+    &-text-content {
+      @apply flex flex-col items-center;
+
+      h1,
+      p,
+      span {
+        @apply text-center;
+      }
+
+      p,
+      span {
+        @apply max-w-2xl;
+      }
+
+      & > h1 {
+        @apply text-6xl font-bold mb-4;
+      }
+
+      & > p {
+        @apply text-lg mb-4;
+      }
+
+      & > span {
+        @apply opacity-60;
+      }
+    }
+  }
+}
+
+.special-icon {
+  @apply p-4 relative rounded-full select-none;
+  @apply shadow dark:shadow-slate-100;
+  @apply bg-slate-100 dark:bg-slate-600;
+  @apply border-2 dark:border border-slate-600 dark:border-slate-100;
+
+  &-wrapper {
+    @apply flex flex-col items-center justify-center mb-4;
+  }
+
+  .overlay {
+    @apply absolute h-full w-full top-0 left-0 rounded-full z-40;
+    @apply bg-gradient-to-t from-slate-100 dark:from-slate-600 from-20%;
+    @apply flex flex-col items-center justify-center;
+
+    img {
+      @apply block z-50;
+      animation: pulse-opacity 1.5s infinite;
+    }
+  }
+
+  img {
+    @apply w-52 h-52 p-5 opacity-60 invert-[20%] dark:invert;
+  }
+}
+
+@keyframes pulse-opacity {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

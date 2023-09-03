@@ -8,6 +8,8 @@ import { ApiTodoService } from '../shared/services/api/api-todo.service';
   providedIn: 'root',
 })
 export class TodoService implements OnDestroy {
+  hasBackend$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+
   todoSream$: BehaviorSubject<StrapiEntry<Todo>[]> = new BehaviorSubject<
     StrapiEntry<Todo>[]
   >([]);
@@ -24,14 +26,34 @@ export class TodoService implements OnDestroy {
 
   constructor(private apiTodoService: ApiTodoService) {
     this.updateData();
+    this.hasBackend$.subscribe((hasBackend) => {
+      if (!hasBackend) {
+        setTimeout(() => {
+          this.updateData(true);
+        }, 5000);
+      }
+    });
   }
 
-  private async updateData() {
-    const response = await this.apiTodoService.getAll(this._generate_params());
+  private async updateData(allowBackendUpdate: boolean = false) {
+    let response;
+    try {
+      response = await this.apiTodoService.getAll(this._generate_params());
+    } catch (error: any) {
+      if (error.status === 0) {
+        this.hasBackend$.next(false);
+        return;
+      } else if (allowBackendUpdate) {
+        this.hasBackend$.next(true);
+      }
+    }
+
     if (response && response.meta.pagination) {
       this.pagination = response.meta.pagination;
       this.todos[this.pagination.page] = response.data;
     }
+
+    return true;
   }
 
   prevPage() {

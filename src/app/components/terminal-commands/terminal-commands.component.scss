@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap");
+
+.code-block {
+  font-family: "Source Code Pro", monospace;
+
+  &-wrapper {
+    @apply bg-slate-200 dark:bg-slate-700 font-medium text-slate-700 dark:text-slate-100;
+    &:hover {
+      app-icon-button {
+        @apply opacity-100;
+      }
+    }
+  }
+
+  &-header {
+    @apply flex flex-row relative px-3 text-lg;
+
+    > app-icon-button {
+      @apply absolute top-0 right-0 m-2 opacity-0 transition-opacity;
+    }
+  }
+
+  &-row {
+    @apply flex flex-row px-3 py-1;
+
+    &:nth-child(odd) {
+      @apply bg-slate-500 dark:bg-slate-50 bg-opacity-5;
+    }
+  }
+
+  .prefix {
+    @apply select-none font-semibold pr-2;
+  }
+}
