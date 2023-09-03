@@ -32,3 +32,4 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist/ict-294-praxisarbeit
+          token: ${{ secrets.G_PAT }}
