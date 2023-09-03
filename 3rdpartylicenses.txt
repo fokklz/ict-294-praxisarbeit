@@ -66,6 +66,9 @@ MIT
 @angular/router
 MIT
 
+ng-adblock-detect2
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
