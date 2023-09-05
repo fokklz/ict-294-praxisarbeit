@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
 
     this.todoService.hasBackend$.subscribe((hasBackend) => {
       this.noBackendOverlay = !hasBackend;
+      document.body.style.overflow = hasBackend ? 'auto' : 'hidden';
     });
   }
 
