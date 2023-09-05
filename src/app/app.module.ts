@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,7 +50,12 @@ import { ConfirmDeleteComponent } from './dialogs/confirm-delete/confirm-delete.
     ComponentsModule,
     TodoFormModule,
   ],
-  providers: [StylingService, TodoService, SearchService],
+  providers: [
+    StylingService,
+    TodoService,
+    SearchService,
+    { provide: LOCALE_ID, useValue: 'de' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

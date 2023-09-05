@@ -1,5 +1,3 @@
-import 'moment/locale/de';
-
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
