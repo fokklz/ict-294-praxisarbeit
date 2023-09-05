@@ -149,6 +149,7 @@ export class TodoService implements OnDestroy {
   async delete(id: number) {
     await this.apiTodoService.delete(id);
     delete this.todos[id];
+    this.unsorted = this.unsorted.filter((todo) => todo.id !== id);
     this.sort();
   }
 

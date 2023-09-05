@@ -17,6 +17,8 @@ import {
 } from '@angular/animations';
 import { TodoFormComponent } from 'src/app/components/todo-form/todo-form.component';
 import { TodoService } from 'src/app/services/todo.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDeleteComponent } from 'src/app/dialogs/confirm-delete/confirm-delete.component';
 
 @Component({
   selector: 'app-todo',
@@ -58,7 +60,8 @@ export class TodoComponent implements OnDestroy, OnInit {
 
   constructor(
     private todoService: TodoService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -109,6 +112,12 @@ export class TodoComponent implements OnDestroy, OnInit {
   get hasFormChanges(): boolean {
     if (!this.todoForm) return false;
     return this.todoForm.hasFormChanged;
+  }
+
+  deleteTodo() {
+    this.dialog.open(ConfirmDeleteComponent, {
+      data: { id: this.data.id },
+    });
   }
 
   toggleEditing() {

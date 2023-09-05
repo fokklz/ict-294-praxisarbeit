@@ -21,7 +21,7 @@
     <div class="flex flex-row items-center space-x-4">
       <app-icon-button [icon]="editing ? 'close' : 'edit'" (click)="toggleEditing()" noBg
         [ngClass]="{'opacity-30 pointer-events-none': isTimeUp}"></app-icon-button>
-      <app-icon-button icon="delete" noBg></app-icon-button>
+      <app-icon-button icon="delete" (click)="deleteTodo()" noBg></app-icon-button>
     </div>
   </div>
   <div [@slideVertical]="editing ? '*' : 'void'">

@@ -19,6 +19,7 @@ export class ConfirmDeleteComponent {
   }
 
   deleteTodo() {
+    console.log('deleteTodo');
     this.todoService.delete(this.data.id);
     this.dialogRef.close();
   }
