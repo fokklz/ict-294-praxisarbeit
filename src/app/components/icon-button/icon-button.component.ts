@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class IconButtonComponent {
   @Input() icon: string = '';
+  @Input() noBg!: string;
+
+  hasBg() {
+    return this.noBg != '';
+  }
 }

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Favorite Animal</h1>
+<div mat-dialog-content>
+  <app-todo-form #todoForm></app-todo-form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Abbrechen</button>
+  <button mat-button (click)="createTodo()" cdkFocusInitial>Erstellen</button>
+</div>

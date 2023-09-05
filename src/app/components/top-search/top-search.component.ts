@@ -6,6 +6,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-top-search',
@@ -40,7 +41,7 @@ export class TopSearchComponent {
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
   @ViewChild('inputWrapper') inputWrapper!: ElementRef<HTMLDivElement>;
 
-  constructor() {}
+  constructor(public searchService: SearchService) {}
 
   onFocus() {
     this.focused = true;
@@ -61,7 +62,7 @@ export class TopSearchComponent {
   do(e: Event) {
     if (this.dirty) {
       e.stopPropagation();
-      console.log('do');
+      this.searchService.search(this.input.nativeElement.value);
     }
   }
 

@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>To-Do Löschen?</h1>
+<div mat-dialog-content>Bist du sicher das du das To-Do löschen möchtest?</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Abbrechen
+  </button>
+  <button mat-button (click)="deleteTodo()">Löschen</button>
+</div>

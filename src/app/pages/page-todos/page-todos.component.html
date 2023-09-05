@@ -1,23 +1,18 @@
 <div class="flex flex-col items-center">
-  <header class="w-full">
-    <div>
+  <header class="container grid ">
+    <div class="flex flex-row items-center col-span-1">
       <app-brand></app-brand>
     </div>
-    <div>
+    <div class="flex flex-row items-center col-span-1">
       <app-top-search class="w-full"></app-top-search>
     </div>
-    <div>
-      <app-icon-button icon="add"></app-icon-button>
+    <div class="flex flex-row items-center justify-end col-span-1 space-x-2">
+      <app-icon-button icon="add" (click)="openCreateDialog()"></app-icon-button>
       <app-icon-button [icon]="theme.darkMode$.value ? 'light_mode' : 'dark_mode'"
         (click)="theme.toggleTheme()"></app-icon-button>
     </div>
   </header>
-  <main class="container">
-    <div *ngFor="let page of pages">
-      <h1>Page {{page}}</h1>
-      <div *ngFor="let todo  of todoService.todos[page]">
-        <h1>{{todo.attributes.title}}</h1>
-      </div>
-    </div>
+  <main class="container overflow-visible">
+    <app-todo *ngFor="let todo of todoService.todos$ | async" [data]="todo"></app-todo>
   </main>
 </div>

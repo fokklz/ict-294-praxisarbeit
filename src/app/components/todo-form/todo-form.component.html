@@ -1,0 +1,26 @@
+<div class="flex flex-row flex-wrap p-5 pb-0 " [formGroup]="formGroup">
+  <!-- Input Group -->
+  <div class="flex flex-col flex-1">
+    <!-- Form-Field: Title -->
+    <mat-form-field color="accent">
+      <mat-label>Titel</mat-label>
+      <input matInput type="text" name="title" formControlName="title">
+    </mat-form-field>
+    <!-- Form-Field: Description -->
+    <mat-form-field color="accent">
+      <mat-label>Beschreibung</mat-label>
+      <textarea matInput type="text" name="description" formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+  <!-- Form-Field: Due Date -->
+  <div class="flex flex-col flex-1 max-w-[280px] min-w-[200px] pl-4">
+    <p class="text-lg font-bold">Fälligkeitsdatum</p>
+    <mat-calendar [(selected)]="modifyDate" color="accent" [startAt]="today()" [minDate]="today()"
+      #calendar></mat-calendar>
+  </div>
+  <!-- Form-Field: Due Time -->
+  <div class="flex flex-col flex-1 max-w-[280px] min-w-[200px] pl-4">
+    <p class="text-lg font-bold">Fälligkeitszeit</p>
+    <app-time-picker formControlName="time"></app-time-picker>
+  </div>
+</div>

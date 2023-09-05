@@ -46,3 +46,7 @@ export interface StrapiErrorResponse {
   data: {};
   error: StrapiError;
 }
+
+export interface StrapiPutRequest<T> {
+  data: T;
+}

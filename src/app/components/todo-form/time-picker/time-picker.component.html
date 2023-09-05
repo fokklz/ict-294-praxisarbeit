@@ -1,0 +1,11 @@
+<div class="flex flex-row justify-center select-none">
+  <div class="flex flex-col">
+    <app-time-selector [max]="24" [value]="currentHours" (valueChange)="setHours($event)"></app-time-selector>
+  </div>
+  <div class="flex flex-col justify-center px-3 transition-all">
+    <span class="text-2xl font-black">:</span>
+  </div>
+  <div class="flex flex-col">
+    <app-time-selector [value]="currentMinutes" (valueChange)="setMinutes($event)"></app-time-selector>
+  </div>
+</div>

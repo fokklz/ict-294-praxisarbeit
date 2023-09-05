@@ -1,0 +1,37 @@
+<div class="flex flex-col min-h-[60px] px-4 mb-3 rounded-lg shadow dark:shadow-slate-950 transition-all"
+  [id]="'todo-'+data.id">
+  <!-- Todo Inner -->
+  <div class="flex flex-row flex-1 py-4" [ngClass]="{'select-none': isTimeUp}">
+    <!-- Progress Control -->
+    <div class="flex flex-row items-center space-x-2" [ngClass]="{'opacity-30 pointer-events-none': isTimeUp}">
+      <mat-slide-toggle [(ngModel)]="progressControl" color="accent" [disabled]="isTimeUp"></mat-slide-toggle>
+    </div>
+    <!-- Todo Content -->
+    <div class="flex flex-col justify-center flex-1 pl-2" [ngClass]="{
+        'opacity-30 pointer-events-none': isTimeUp}">
+      <h1 class="font-black" [ngClass]="{'text-xl': !hasDescription}">{{title}}</h1>
+      <p class="text-sm" *ngIf="hasDescription">{{description}}</p>
+    </div>
+    <!-- Time Left -->
+    <div class="flex flex-row items-center pr-6 space-x-3" [ngClass]="{
+      'opacity-30 pointer-events-none': isTimeUp}">
+      <p *ngIf="hasDue" class="mt-2 font-normal">{{timeLeft}}</p>
+    </div>
+    <!-- Actions -->
+    <div class="flex flex-row items-center space-x-4">
+      <app-icon-button [icon]="editing ? 'close' : 'edit'" (click)="toggleEditing()" noBg
+        [ngClass]="{'opacity-30 pointer-events-none': isTimeUp}"></app-icon-button>
+      <app-icon-button icon="delete" noBg></app-icon-button>
+    </div>
+  </div>
+  <div [@slideVertical]="editing ? '*' : 'void'">
+    <!-- Todo Form -->
+    <app-todo-form [initialData]="data" *ngIf="editingEcho" #todoForm></app-todo-form>
+    <div class="flex flex-row px-5 pb-5">
+      <button (click)="disableEditing()" class="flz-btn">Abbrechen</button>
+      <span class="flex-1"></span>
+      <button (click)="save()" class="transition-colors btn p bg-slate-300 dark:bg-slate-700"
+        [disabled]="!hasFormChanges">Speichern</button>
+    </div>
+  </div>
+</div>

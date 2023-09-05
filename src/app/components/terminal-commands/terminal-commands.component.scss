@@ -24,7 +24,7 @@
     @apply flex flex-row px-3 py-1;
 
     &:nth-child(odd) {
-      @apply bg-slate-500 dark:bg-slate-50 bg-opacity-5;
+      @apply bg-slate-500 bg-opacity-5 dark:bg-slate-50 dark:bg-opacity-5;
     }
   }
 

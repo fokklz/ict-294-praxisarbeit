@@ -17,6 +17,13 @@ import { IconButtonModule } from './components/icon-button/icon-button.module';
 import { TodoService } from './services/todo.service';
 import { StylingService } from './services/styling.service';
 import { TerminalCommandsComponent } from './components/terminal-commands/terminal-commands.component';
+import { TodoComponent } from './pages/page-todos/todo/todo.component';
+
+import { ComponentsModule } from './components/components.module';
+import { TodoFormModule } from './components/todo-form/todo-form.module';
+import { SearchService } from './services/search.service';
+import { CreateTodoComponent } from './dialogs/create-todo/create-todo.component';
+import { ConfirmDeleteComponent } from './dialogs/confirm-delete/confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +32,9 @@ import { TerminalCommandsComponent } from './components/terminal-commands/termin
     PageTodosComponent,
     BrandComponent,
     TerminalCommandsComponent,
+    TodoComponent,
+    CreateTodoComponent,
+    ConfirmDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +47,10 @@ import { TerminalCommandsComponent } from './components/terminal-commands/termin
     TopSearchModule,
     IconButtonModule,
     NgAdblockDetectModule,
+    ComponentsModule,
+    TodoFormModule,
   ],
-  providers: [StylingService, TodoService],
+  providers: [StylingService, TodoService, SearchService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

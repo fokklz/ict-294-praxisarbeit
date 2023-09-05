@@ -9,6 +9,10 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const modules = [
   MatAutocompleteModule,
@@ -16,6 +20,10 @@ const modules = [
   MatInputModule,
   MatDatepickerModule,
   MatSnackBarModule,
+  MatSlideToggleModule,
+  MatNativeDateModule,
+  MatButtonModule,
+  MatDialogModule,
 ];
 
 @NgModule({

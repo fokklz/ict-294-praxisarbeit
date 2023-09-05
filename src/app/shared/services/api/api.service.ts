@@ -59,9 +59,44 @@ export class ApiService<T> {
     );
   }
 
-  protected async post<U>(location: string, body: JSONLike, params?: JSONLike) {
+  protected async post<U>(location: string, body: T, params?: JSONLike) {
     return await this._handle(
-      this.http.post<U>(`${this.url}/${location}`, body, {
+      this.http.post<U>(
+        `${this.url}/${location}`,
+        {
+          data: body,
+        },
+        {
+          params,
+          headers: this._strapi_headers(),
+        }
+      )
+    );
+  }
+
+  protected async put<U>(
+    location: string,
+    id: number,
+    body: Partial<T>,
+    params?: JSONLike
+  ) {
+    return await this._handle(
+      this.http.put<U>(
+        `${this.url}/${location}/${id}`,
+        {
+          data: body,
+        },
+        {
+          params,
+          headers: this._strapi_headers(),
+        }
+      )
+    );
+  }
+
+  protected async del<U>(location: string, id: number, params?: JSONLike) {
+    return await this._handle(
+      this.http.delete<U>(`${this.url}/${location}/${id}`, {
         params,
         headers: this._strapi_headers(),
       })
@@ -73,13 +108,23 @@ export class ApiService<T> {
     return this.get<StrapiResponseMany<T>>(this.endpoint, params);
   }
 
-  public getOne(id: string, params?: JSONLike) {
+  public getOne(id: number, params?: JSONLike) {
     this._check();
     return this.get<StrapiResponseSingle<T>>(`${this.endpoint}/${id}`, params);
   }
 
-  public create(body: JSONLike, params?: JSONLike) {
+  public create(body: T, params?: JSONLike) {
     this._check();
     return this.post<StrapiResponseSingle<T>>(this.endpoint, body, params);
+  }
+
+  public delete(id: number, params?: JSONLike) {
+    this._check();
+    return this.del<number>(this.endpoint, id, params);
+  }
+
+  public update(id: number, body: Partial<T>, params?: JSONLike) {
+    this._check();
+    return this.put<StrapiResponseSingle<T>>(this.endpoint, id, body, params);
   }
 }

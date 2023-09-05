@@ -1,19 +1,14 @@
-<div id="wrapper" [ngClass]="{'blured': noBackendOverlay}">
-  <router-outlet></router-outlet>
+<div id="wrapper">
+  <div [ngClass]="{'blured': noBackendOverlay}">
+    <router-outlet></router-outlet>
 
-  <ng-adblock-detect (adblockDetected)="detected($event)"></ng-adblock-detect>
+    <ng-adblock-detect (adblockDetected)="detected($event)"></ng-adblock-detect>
+  </div>
 </div>
 <div id="no-backend-overlay" *ngIf="noBackendOverlay">
   <div class="overlay-content">
     <div class="overlay-text-content">
-      <div class="special-icon-wrapper">
-        <div class="special-icon">
-          <div class="overlay">
-            <img src="assets/no-backend.png">
-          </div>
-          <img src="assets/backend.png" alt="server">
-        </div>
-      </div>
+
       <h1>Strapi nicht gefunden</h1>
       <p>
         Die Verbindung zu Strapi konnte nicht hergestellt werden. Befolge die anweisungen unten um Stapi local zu

@@ -1,0 +1,18 @@
+<div class="inline-flex flex-col max-w-[40px]">
+  <div class="flex flex-row justify-center">
+    <div (click)="add()" class="cursor-pointer">
+      <span class="text-3xl material-symbols-outlined">
+        expand_less
+      </span>
+    </div>
+  </div>
+  <input type="text" min="0" [max]="max" [(ngModel)]="formattedValue" #input
+    class="flex-shrink w-auto h-auto p-0 m-0 tracking-wide text-center bg-transparent outline-none">
+  <div class="flex flex-row justify-center">
+    <div (click)="subtract()" class="cursor-pointer">
+      <span class="text-3xl material-symbols-outlined">
+        expand_more
+      </span>
+    </div>
+  </div>
+</div>

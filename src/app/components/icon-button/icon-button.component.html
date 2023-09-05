@@ -1,5 +1,9 @@
-<button class="icon-button">
-  <span class="material-symbols-outlined fill">
+<button class="flex flex-row items-center justify-center transition-colors cursor-pointer select-none" [ngClass]="{
+    'bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700': hasBg(),
+    'px-3 py-2 rounded-md': hasBg(),
+  }">
+  <span class="material-symbols-outlined fill text-slate-500"
+    [ngClass]="{'hover:text-slate-400 dark:hover:text-slate-600': !hasBg()}">
     {{ icon }}
   </span>
 </button>
