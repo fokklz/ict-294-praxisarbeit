@@ -1,10 +1,10 @@
 <div class="flex flex-col items-center">
   <header class="container grid ">
     <div class="flex flex-row items-center col-span-1">
-      <app-brand></app-brand>
+      <p class="text-2xl font-bold text-slate-400">Todo<span class="opacity-50">'s</span></p>
     </div>
     <div class="flex flex-row items-center col-span-1">
-      <app-top-search class="w-full"></app-top-search>
+      <app-top-search class="w-full" (search)="updateSearch($event)"></app-top-search>
     </div>
     <div class="flex flex-row items-center justify-end col-span-1 space-x-2">
       <app-icon-button icon="add" (click)="openCreateDialog()"></app-icon-button>
@@ -13,6 +13,6 @@
     </div>
   </header>
   <main class="container overflow-visible">
-    <app-todo *ngFor="let todo of todoService.todos$ | async" [data]="todo"></app-todo>
+    <app-todo *ngFor="let todo of todos | async" [data]="todo"></app-todo>
   </main>
 </div>

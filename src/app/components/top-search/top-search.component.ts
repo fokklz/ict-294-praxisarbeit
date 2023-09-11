@@ -1,4 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   trigger,
   state,
@@ -6,7 +12,6 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-top-search',
@@ -37,11 +42,14 @@ export class TopSearchComponent {
   focused = false;
   shadowFocus = false;
   dirty = false;
+  debounceTimeout: any;
 
   @ViewChild('input') input!: ElementRef<HTMLInputElement>;
   @ViewChild('inputWrapper') inputWrapper!: ElementRef<HTMLDivElement>;
 
-  constructor(public searchService: SearchService) {}
+  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor() {}
 
   onFocus() {
     this.focused = true;
@@ -57,13 +65,12 @@ export class TopSearchComponent {
     if (this.input.nativeElement.value.length <= 0) {
       this.dirty = false;
     }
+    this.do();
   }
 
-  do(e: Event) {
-    if (this.dirty) {
-      e.stopPropagation();
-      this.searchService.search(this.input.nativeElement.value);
-    }
+  do(e?: Event) {
+    if (e) e.stopPropagation();
+    this.search.emit(this.input.nativeElement.value);
   }
 
   focusInput(e: Event) {

@@ -11,27 +11,19 @@ import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';
 import { PageTodosComponent } from './pages/page-todos/page-todos.component';
 import { MaterialModule } from './shared/modules/material.module';
-import { TopSearchModule } from './components/top-search/top-search.module';
-import { BrandComponent } from './components/brand/brand.component';
-import { IconButtonModule } from './components/icon-button/icon-button.module';
 import { TodoService } from './services/todo.service';
 import { StylingService } from './services/styling.service';
-import { TerminalCommandsComponent } from './components/terminal-commands/terminal-commands.component';
 import { TodoComponent } from './pages/page-todos/todo/todo.component';
 
-import { ComponentsModule } from './components/components.module';
-import { TodoFormModule } from './components/todo-form/todo-form.module';
-import { SearchService } from './services/search.service';
 import { CreateTodoComponent } from './dialogs/create-todo/create-todo.component';
 import { ConfirmDeleteComponent } from './dialogs/confirm-delete/confirm-delete.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     PagesComponent,
     PageTodosComponent,
-    BrandComponent,
-    TerminalCommandsComponent,
     TodoComponent,
     CreateTodoComponent,
     ConfirmDeleteComponent,
@@ -44,16 +36,12 @@ import { ConfirmDeleteComponent } from './dialogs/confirm-delete/confirm-delete.
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    TopSearchModule,
-    IconButtonModule,
     NgAdblockDetectModule,
     ComponentsModule,
-    TodoFormModule,
   ],
   providers: [
     StylingService,
     TodoService,
-    SearchService,
     { provide: LOCALE_ID, useValue: 'de' },
   ],
   bootstrap: [AppComponent],
